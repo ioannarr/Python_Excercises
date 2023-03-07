@@ -1,0 +1,42 @@
+print('Hello user!') 
+
+pizzas = ['tomate', 'muzzarella', 'figazza', 'caballo', 'faina']
+price = 120
+order = []
+
+response = input('do you want to order pizza?, yes or no?')
+
+if response == 'yes':
+    for i, aux in enumerate(pizzas):  
+        print(str(i) , ':' , aux) 
+        
+    continueOrder = True
+    while continueOrder:
+        value = int(input('Do you want to order pizza? yes or no Select an Index for a pizza'))
+        if value != '':
+            print('you have selected: ' , value, ': ', aux)
+            order.append(pizzas[value])
+            print('your oder is: ', order)
+            total = 120*len(order)
+            print('you pay: $', total)
+        else:        
+             continueOrder = False
+        
+        validtip = False
+        while not validtip:
+            tip = float(input('Enter the tip you want to add to the order?'))
+            if (tip >=0):
+               validtip = True
+               total = tip + total
+               print(' the new total is: ', total)
+            else:
+               print('Why no tip?')
+                
+elif response == 'no':
+    print(order)
+    print ('End program')
+
+else: 
+    print('input not valid')
+
+
