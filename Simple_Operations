@@ -1,0 +1,46 @@
+
+#create a list
+grade_list =[]
+
+def print_instructions():
+    print('Hello, enter a grade to calculate statistics, enter -1 for exiting the program')
+
+#request a grade validate grade and print the appended list
+#calculate min of list
+def calculate_min():
+    min_grade = min(grade_list)
+    print('min_grade is: ', min_grade)
+    return min_grade
+
+#calculate max of list
+def calculate_max():
+    max_grade = max(grade_list)
+    print('max_grade is: ', max_grade)
+    return max_grade
+
+
+#calculate ave of list
+def calculate_ave():
+    average_grades = sum(grade_list) / len(grade_list)
+    print ('Average grade is: ', average_grades)
+    return average_grades
+
+
+def request_a_grade():
+    grade = int(input('Enter a grade: '))
+    while (grade != -1):
+        grade_list.append(grade)
+        grade = int(input('Enter a grade: '))
+    print('No more grades, then lets calculate : ')
+    print(grade_list)
+    calculate_min()
+    calculate_max()
+    calculate_ave()
+    return grade_list
+
+
+
+####################################################
+
+print_instructions()
+request_a_grade()
