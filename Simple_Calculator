@@ -1,0 +1,55 @@
+def welcome(username):
+    input(print('welcome: ' + username))
+    print('These are the caclulator instructions: ')
+    print('Enter one number, then number 2, then the operation you want to perform')
+
+
+
+def calculator():
+
+    number1 = int(input('Enter number 1:')) 
+    print('You have entered ', number1)
+    number2 = int(input('Enter number 2: '))
+    print('You have entered ', number2)
+    operation = input('Enter an operation +, -, * or /: ')
+    print('You have entered ', operation)
+   
+    def plus(number1, number2):
+        result_plus = int(number1 + number2) 
+        print('Answer is: ', result_plus)
+        return result_plus
+    
+    
+    def minus(number1, number2):
+        result_minus = int(number1-number2)
+        print('Answer is: ', result_minus)
+        return result_minus
+     
+    def mult(number1, number2):
+        result_mult = int(number1*number2)
+        print('Answer is: ' , result_mult)
+        return result_mult
+     
+     
+    def div(number1, number2):
+        result_div = int(number1/number2)
+        print('Answer is: ', result_div)
+        return result_div
+    
+    if (operation == '+'):
+            plus(number1, number2)
+    elif (operation == '-'):
+            minus(number1, number2)
+    elif (operation == '*'):  
+            mult(number1, number2)
+    elif (operation == '/'):  
+            div(number1, number2) 
+    else:
+        print('not a valid operation')
+
+
+
+welcome('Ioanna')
+
+calculator()  
+    
