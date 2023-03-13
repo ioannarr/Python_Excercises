@@ -1,0 +1,28 @@
+#Dado
+#Generar un programa de consola que tenga un menú y permita generar números aleatorios
+#entre 1 y 6, como si fuera un dado.
+#Menú
+#1. Tirar dado.
+#2. Salir
+
+import random
+
+def saludo():
+    print('Bienvenido al programa')
+
+def exit():
+    print('Gracias!')
+
+def Empezar():    
+    instru = int(input('Hola ingrese uno de los dos valores 1, para tirar el dado y 2 para salir: '))
+    #valido el valor ingresado, si es 1, gfenero un random y printeo en pantalla, si es 2 exit()
+    while True:
+        if instru == 1:
+            valor = random.randint(1, 6)
+            print(valor)    
+        elif instru == 2:
+            exit()
+            break
+    return instru
+
+saludo()
