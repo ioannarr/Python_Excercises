@@ -1,0 +1,16 @@
+def guess_cards():
+    global card_list
+    while len(card_list) > 0:
+        list_index = random.randit(0, (len(card_list)-1))
+        word_en = card_list.list_index[0]
+        word_es = card_list.list_index[1]
+        answer = input(word_en + '?')
+        if answer == word_es:
+            print('correct!')
+            del(card_list[list_index])
+        else:
+            print('Not correct, try again')
+
+exit_if_no_cards()
+card_list = retreive_cards_from_list()
+guess_cards()
