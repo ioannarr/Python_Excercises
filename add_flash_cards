@@ -1,0 +1,70 @@
+#translate a word, create a card, add card to list
+#keep asking for new cards, then save into file
+#retrieve and display existing cards at the beggining
+
+from googletrans import Translator
+import os
+import ast
+
+tr = Translator()
+print(tr.translate('Hola', src= 'es', dest = 'en').text)
+card_list = []
+
+def exit():
+     return print('Good Bye')
+    
+def retreive_cards_from_list():
+    global card_list
+    if os.path.exists('add_flash_cards'):
+        with open('add_flash_cards', 'r') as f:
+            card_list = ast.literal_eval(f.read())
+            print(f.read())
+    return card_list
+
+def display_card(card_list):
+    for aux, cards in enumerate(card_list):
+        print(str(aux+1) + ':', cards[0] + ':' + cards[1])    
+
+
+def translate_word(word_en):
+    word_es = tr.translate(word_en, src= 'es', dest = 'en')
+    return word_es
+
+def create_new_card():
+    global card_list
+    word_en = input('Enter a word in English')
+    word_es = translate_word(word_en)
+    new_card=(word_en, word_es)
+    save = input('Do you want to save this card? Yes or No?')
+    if save == 'Yes':
+        card_list.append(new_card)
+        return card_list
+    else:
+        exit()
+        print(card_list)
+
+def save_cards_tofile():
+    answer = input('Save the card for later? Yes or No')
+    if answer == 'Yes':
+            with open ('read_flash_cards', 'w') as f:
+                f.write(str(card_list))
+    else:
+         exit() 
+
+
+card_list = retreive_cards_from_list()
+display_card(card_list)
+
+
+while True:
+     create_new_card()
+     game_cont = input('Do you want to continue translating words? Yes or No?')
+     if game_cont == 'No':
+        break
+
+
+save_cards_tofile()
+display_card(card_list)
+
+    
+  
