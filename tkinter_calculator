@@ -1,0 +1,110 @@
+import tkinter as tk
+
+#controlamos que son enteros
+
+def convertir(valor):
+    if valor.isdecimal == False:
+        valor = 'error'
+    else:
+        valor = int(valor)
+    return valor
+
+#definimos las operaciones de la calculadora
+#vamos borrando resultados para que no acumules
+
+def sumar():
+    resultado.delete(0,tk.END)
+    a = ingreso_uno.get()
+    a = convertir(a)
+    b = ingreso_dos.get()
+    b = convertir(b)
+
+    #vvalidamos que no haya entrado float
+    if a!= 'error' and b != 'error':
+        c = a + b
+    else:
+        c='error'
+    resultado.insert(0, c)
+
+def restar():
+    resultado.delete(0,tk.END)
+    a = ingreso_uno.get()
+    a = convertir(a)
+    b = ingreso_dos.get()
+    b = convertir(b)
+
+    if a!= 'error' and b != 'error':
+        c = a - b
+    else:
+        c='error'
+    resultado.insert(0, c)
+
+def multiplicar():
+    resultado.delete(0,tk.END)
+    a = ingreso_uno.get()
+    a = convertir(a)
+    b = ingreso_dos.get()
+    b = convertir(b)
+
+    if a!= 'error' and b != 'error':
+        c = a * b
+    else:
+        c='error'
+    resultado.insert(0, c)
+
+def dividir():
+    resultado.delete(0,tk.END)
+    a = ingreso_uno.get()
+    a = convertir(a)
+    b = ingreso_dos.get()
+    b = convertir(b)
+
+    if a!= 'error' and b != 'error' and b != 0:
+        c = a * b
+    else:
+        c='error'
+    resultado.insert(0, c)
+
+#ventana grafica de tkinter
+
+ventana = tk.Tk()
+ventana.title('Una Calculadora')
+ventana.config(width=600, height=600)
+ventana.geometry('500x500')
+ventana.config(bg = 'white')
+
+
+#defino los botones de la interfaz
+
+boton_sumar = tk.Button(text='Sumar', command=sumar)
+boton_sumar.place(x=20, y=25, width=100, height=25)
+
+boton_restar = tk.Button(text='Restar', command=restar)
+boton_restar.place(x=150, y=25, width=100, height=25)
+
+boton_multiplicar = tk.Button(text='Multiplicar', command=multiplicar)
+boton_multiplicar.place(x=270, y=25, width=100, height=25)
+
+boton_dividir = tk.Button(text='Dividir', command=dividir)
+boton_dividir.place(x=390, y=25, width=100, height=25)
+
+#defino los espacios de ingresos y el de resultados de la operacion
+
+label1 = tk.Label(text='Ingresar Dato Uno: ', bg='yellow')
+label1.place(x=100, y=225)
+ingreso_uno = tk.Entry()
+ingreso_uno.place(x=100, y=250, width=100, height=25)
+
+label2 = tk.Label(text='Ingreso Dato Dos: ', bg='yellow')
+label2.place(x=300, y=225, width=100, height=25)
+ingreso_dos = tk.Entry()
+ingreso_dos.place(x=300, y=250, width=100, height=25)
+
+label_res = tk.Label(text='Resultado: ', bg='yellow')
+label_res.place(x=200, y=325, width=100, height=25)
+resultado = tk.Entry()
+resultado.place(x=200, y=350, width=100, height=25)
+
+
+
+ventana.mainloop()
