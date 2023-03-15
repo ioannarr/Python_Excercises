@@ -1,0 +1,83 @@
+import tkinter as tk
+
+
+#ventana grafica de tkinter
+
+ventana = tk.Tk()
+ventana.title('Proyecto Integrador')
+ventana.config(width=500, height=300)
+ventana.geometry('500x300')
+ventana.config(bg = 'white')
+
+
+#bienvenida
+def instru():
+    print('Hola!')
+    print('Ingrese el nombre y la cantidad de alumnos y presione Agregar Alumno')
+    print ('Si desea ver la lista de alumnos, presione el boton Ver Lista de Alumnos')
+
+instru()
+
+def verificar(dato):
+    while dato ==  '':
+        print('Error')
+        dato = input('Ingrese el dato nuevamente')
+    return dato
+    
+def convertir (cantidad):
+    while cantidad.isdecimal() == False:
+        print('Error')
+        cantidad = input('Ingrese el valor nuevamente')
+        cantidad = int(cantidad)
+    return cantidad
+
+
+#alumnos es una matriz de nombre y cantidad
+
+alumnos = []
+
+#defino las funcionalidades
+
+def mostrar_lista():
+#recorremosy listamos los alumnos
+    for aux in alumnos:
+        print('nombre: ', aux[0], ' -  ', 'cursos: ',  aux[1]), 
+        #print(aux, ' - ', alumnos[aux], 'cursos')
+
+def agregar_alumno():
+    nombre = ingreso_nombre.get()
+    nombre = verificar(nombre)
+    cantidad = ingreso_cursos.get()
+    cantidad = convertir(cantidad)
+    cantidad = str(cantidad)
+    # print(nombre + ' - ' + str(cantidad) + 'cursos')
+    alumnos.append([nombre , cantidad])
+    print(alumnos)
+    print('Se ha agregado el alumno correctamente')
+    ingreso_nombre.delete(0, tk.END)
+    return alumnos
+
+
+# controles de la aplicacion
+
+boton_lista_alumnos = tk.Button(text='Ver Lista de Alumnos', command=mostrar_lista)
+boton_lista_alumnos.place(x=50, y=50, width=200, height=25)
+
+boton_agregar_alumno = tk.Button(text='Agregar Alumno', command=agregar_alumno)
+boton_agregar_alumno.place(x=50, y=100, width=200, height=25)
+
+
+#defino los espacios de ingresos y el de resultados de la operacion
+
+label_nombre= tk.Label(text='Nombre del Alumno: ', bg='yellow')
+label_nombre.place(x=50, y=200, width=150, height=25)
+ingreso_nombre = tk.Entry()
+ingreso_nombre.place(x=50, y=225, width=150, height=25)
+
+label_cursos = tk.Label(text='Cantidad de Cursos: ', bg='yellow')
+label_cursos.place(x=250, y=200, width=150, height=25)
+ingreso_cursos = tk.Entry()
+ingreso_cursos.place(x=250, y=225, width=150, height=25)
+
+ventana.mainloop()
+
