@@ -1,0 +1,42 @@
+# importo librerias
+
+import tkinter as tk
+import random 
+
+#defino funcion de instrucciones
+
+def instru():
+     print('Bienvenido al programa')
+     print('Presione el boton de arrojar Dado')
+
+#defino funcion random de 1 al 6
+def Tirar():
+    result_dado.delete(0, tk.END)
+    valor = random.randint(1,6)
+    valor = str(valor)
+    result_dado.insert(0,valor)
+    return valor
+
+
+#configuracion ventana grafica de tkinter
+
+ventana = tk.Tk()
+ventana.title('Un Dado')
+ventana.config(width=600, height=600)
+ventana.geometry('500x500')
+ventana.config(bg = 'white')
+
+
+#controles de ventana de tkinter
+
+boton_tirar = tk.Button(text='Tirar Dado', command=Tirar)
+boton_tirar.place(x=200, y=200, width=100, height=30)
+
+
+label1 = tk.Label(text='Valor del Dado: ', bg='yellow')
+label1.place(x=200, y=250)
+
+result_dado = tk.Entry()
+result_dado.place(x=150, y=300, width=200, height=50)
+
+ventana.mainloop()
