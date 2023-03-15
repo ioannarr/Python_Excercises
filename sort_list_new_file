@@ -1,0 +1,29 @@
+city_list = []
+
+with open("city_list", "r") as f:
+    for line in f:
+         city_list.append(line.rstrip("\n"))
+
+sorted_list = sorted(city_list)
+print(sorted_list)
+
+with open("ordered_city_list", 'w') as f:
+     for city in sorted_list:
+            f.write(city  + '\n')
+
+print('Completado')
+
+#####################################################################
+
+Paris
+Berlin
+Tunis
+Delhi
+Shanghai
+Tokyo
+Sydney
+San Francisco
+Mexico City
+Brasilia
+
+######################################################################
